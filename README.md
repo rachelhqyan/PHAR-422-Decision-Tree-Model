@@ -1,4 +1,4 @@
-# PHAR-497-Decision-Tree-Model
+# PHAR 422: Building a Decision Tree in R
 
 ## Learning Objectives
 - Construct cohort-based Decision Tree models in R
@@ -33,10 +33,10 @@ You only need the first paragraph of instructions for each.
 
 ## 2. Download a local version of this repository
 
-- Go to (https://github.com/rachelhqyan/PHAR-497-Decision-Tree-Model)
+- Go to https://github.com/rachelhqyan/PHAR-497-Decision-Tree-Model
 - Under the green 'code' button (top right), 'download ZIP' to download a local copy of the entire repository and its contexts
 - Unzip and open the repository from your downloads folder
-- Click to open the `PHAR22_Decision_Tree_1_Yr` folder (in RStudio, if asked)
+- Click to open the `Decision_Tree_1_Yr` folder (in RStudio, if asked)
 - We will work on `Decision_Tree_1_Yr_Tutorial.qmd`
 
 *Note: you may want to move the R project folder out of your downloads folder to a more logical place, such as where you store 
