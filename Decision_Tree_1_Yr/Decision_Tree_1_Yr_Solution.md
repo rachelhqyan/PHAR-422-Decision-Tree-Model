@@ -68,9 +68,9 @@ p_D1_T0 = p_HD                    # probability the patient Dies
 
 p_T0_1_table <- tribble(
   ~Outcome, ~Probability,
-  "Healthy", p_H1_T0,
-  "Unhealthy", p_U1_T0,
-  "Death", p_D1_T0
+  "Healthy", round(p_H1_T0, 3),
+  "Unhealthy", round(p_U1_T0, 3),
+  "Death", round(p_D1_T0, 3)
 )
 
 kable(p_T0_1_table, caption = "1-Year Pathway Probabilities: T0")
@@ -90,9 +90,9 @@ cost_D1_T0 = C_D + C_T0    # cost of the patient if they Die
 
 cost_T0_1_table <- tribble(
   ~Outcome, ~Cost,
-  "Healthy", cost_H1_T0,
-  "Unhealthy", cost_U1_T0,
-  "Death", cost_D1_T0
+  "Healthy", scales::dollar(cost_H1_T0, accuracy = 0.01),
+  "Unhealthy", scales::dollar(cost_U1_T0, accuracy = 0.01),
+  "Death", scales::dollar(cost_D1_T0, accuracy = 0.01)
 )
 
 kable(cost_T0_1_table, caption = "1-Year Pathway Costs: T0")
@@ -107,9 +107,9 @@ utility_D1_T0 = U_D    # utility of the patient if they become unhealthy
 
 utility_T0_1_table <- tribble(
   ~Outcome, ~Utility,
-  "Healthy", utility_H1_T0,
-  "Unhealthy", utility_U1_T0,
-  "Death", utility_D1_T0
+  "Healthy", round(utility_H1_T0, 3),
+  "Unhealthy", round(utility_U1_T0, 3),
+  "Death", round(utility_D1_T0, 3)
 )
 
 kable(utility_T0_1_table, caption = "1-Year Pathway Utilities: T0")
@@ -127,9 +127,9 @@ p_D1_T1 = p_HD                    # probability the patient Dies
 
 p_T1_1_table <- tribble(
   ~Outcome, ~Probability,
-  "Healthy", p_H1_T1,
-  "Unhealthy", p_U1_T1,
-  "Death", p_D1_T1
+  "Healthy", round(p_H1_T1, 3),
+  "Unhealthy", round(p_U1_T1, 3),
+  "Death", round(p_D1_T1, 3)
 )
 
 kable(p_T1_1_table, caption = "1-Year Pathway Probabilities: T1")
@@ -148,9 +148,9 @@ cost_D1_T1 = C_D + C_T1    # cost of the patient if they Die
 
 cost_T1_1_table <- tribble(
   ~Outcome, ~Cost,
-  "Healthy", cost_H1_T1,
-  "Unhealthy", cost_U1_T1,
-  "Death", cost_D1_T1
+  "Healthy", scales::dollar(cost_H1_T1, accuracy = 0.01),
+  "Unhealthy", scales::dollar(cost_U1_T1, accuracy = 0.01),
+  "Death", scales::dollar(cost_D1_T1, accuracy = 0.01)
 )
 
 kable(cost_T1_1_table, caption = "1-Year Pathway Costs: T1")
@@ -164,9 +164,9 @@ utility_D1_T1 = U_D    # utility of the patient if they become unhealthy
 
 utility_T1_1_table <- tribble(
   ~Outcome, ~Utility,
-  "Healthy", utility_H1_T1,
-  "Unhealthy", utility_U1_T1,
-  "Death", utility_D1_T1
+  "Healthy", round(utility_H1_T1, 3),
+  "Unhealthy", round(utility_U1_T1, 3),
+  "Death", round(utility_D1_T1, 3)
 )
 
 kable(utility_T1_1_table, caption = "1-Year Pathway Utility: T1")
@@ -186,12 +186,12 @@ exp_cost_T0_1 <- c(
 
 exp_cost_T0_1_table <- tribble(
   ~Outcome,    ~Expected_Cost,
-  "Healthy",    exp_cost_T0_1["Healthy"],
-  "Unhealthy",  exp_cost_T0_1["Unhealthy"],
-  "Death",      exp_cost_T0_1["Death"],
+  "Healthy",    scales::dollar(exp_cost_T0_1["Healthy"], accuracy = 1),
+  "Unhealthy",  scales::dollar(exp_cost_T0_1["Unhealthy"], accuracy = 1),
+  "Death",      scales::dollar(exp_cost_T0_1["Death"], accuracy = 1),
 )
 
-kable(exp_cost_T0_1_table, caption = "1-Year: Expected Costs (T0)")
+kable(exp_cost_T0_1_table, caption = "1-Year Expected Costs: T0")
 ```
 
 ```{r}
@@ -204,21 +204,21 @@ exp_cost_T1_1 <- c(
   
 exp_cost_T1_1_table <- tribble(
   ~Outcome,    ~Expected_Cost,
-  "Healthy",    exp_cost_T1_1["Healthy"],
-  "Unhealthy",  exp_cost_T1_1["Unhealthy"],
-  "Death",      exp_cost_T1_1["Death"],
+  "Healthy",    scales::dollar(exp_cost_T1_1["Healthy"], accuracy = 1),
+  "Unhealthy",  scales::dollar(exp_cost_T1_1["Unhealthy"], accuracy = 1),
+  "Death",      scales::dollar(exp_cost_T1_1["Death"], accuracy = 1),
 )
 
-kable(exp_cost_T1_1_table, caption = "1-Year: Expected Costs (T1)")
+kable(exp_cost_T1_1_table, caption = "1-Year Expected Costs: T1")
 ```
 ```{r}
 exp_cost_1yr <- tribble(
   ~Strategy, ~Expected_Cost,
-  "T0 (Conventional)", sum(exp_cost_T0_1),
-  "T1 (Treatment)", sum(exp_cost_T1_1)
+  "T0 (Conventional)", scales::dollar(sum(exp_cost_T0_1), accuracy = 0.01),
+  "T1 (Treatment)", scales::dollar(sum(exp_cost_T1_1), accuracy = 0.01)
 )
 
-kable(exp_cost_1yr, caption = "1-Year: Expected Costs")
+kable(exp_cost_1yr, caption = "1-Year Expected Costs")
 ```
 
 **\*\*Question: What is the expected QALYs of patients in each strategy?**
@@ -233,12 +233,12 @@ exp_qaly_T0_1 <- c(
 
 exp_qaly_T0_1_table <- tribble(
   ~Outcome,    ~Expected_QALY,
-  "Healthy",    exp_qaly_T0_1["Healthy"],
-  "Unhealthy",  exp_qaly_T0_1["Unhealthy"],
-  "Death",      exp_qaly_T0_1["Death"],
+  "Healthy",    round(exp_qaly_T0_1["Healthy"], 3),
+  "Unhealthy",  round(exp_qaly_T0_1["Unhealthy"], 3),
+  "Death",      round(exp_qaly_T0_1["Death"], 3),
 )
 
-kable(exp_qaly_T0_1_table, caption = "1-Year: Expected QALY (T0)")
+kable(exp_qaly_T0_1_table, caption = "1-Year Expected QALY: T0")
 ```
 
 ```{r}
@@ -251,22 +251,22 @@ exp_qaly_T1_1 <- c(
 
 exp_qaly_T1_1_table <- tribble(
   ~Outcome,    ~Expected_QALY,
-  "Healthy",    exp_qaly_T1_1["Healthy"],
-  "Unhealthy",  exp_qaly_T1_1["Unhealthy"],
-  "Death",      exp_qaly_T1_1["Death"],
+  "Healthy",    round(exp_qaly_T1_1["Healthy"], 3),
+  "Unhealthy",  round(exp_qaly_T1_1["Unhealthy"], 3),
+  "Death",      round(exp_qaly_T1_1["Death"], 3),
 )
 
-kable(exp_qaly_T1_1_table, caption = "1-Year: Expected QALY (T1)")
+kable(exp_qaly_T1_1_table, caption = "1-Year Expected QALY: T1")
 ```
 
 ```{r}
 exp_qaly_1yr <- tribble(
   ~Strategy, ~Expected_QALY,
-  "T0 (Conventional)", sum(exp_qaly_T0_1),
-  "T1 (Treatment)", sum(exp_qaly_T1_1)
+  "T0 (Conventional)", round(sum(exp_qaly_T0_1), 3),
+  "T1 (Treatment)", round(sum(exp_qaly_T1_1), 3)
 )
 
-kable(exp_qaly_1yr, caption = "1-Year: Expected QALY")
+kable(exp_qaly_1yr, caption = "1-Year Expected QALY")
 ```
 
 ## 1 Year ICER
@@ -280,8 +280,8 @@ icer_1 <- incremental_cost_1/incremental_qaly_1
 
 icer_1yr <- tribble(
   ~Incremental_Cost, ~Incremental_QALY, ~ICER,
-  incremental_cost_1, incremental_qaly_1, icer_1
+  scales::dollar(incremental_cost_1, accuracy = 1), round(incremental_qaly_1, 3), scales::dollar(icer_1, accuracy = 1)
 )
 
-kable(icer_1yr, caption = "1-Year: ICER")
+kable(icer_1yr, caption = "1-Year ICER")
 ```
