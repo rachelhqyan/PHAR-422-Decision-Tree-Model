@@ -102,7 +102,7 @@ kable(cost_T0_1_table, caption = "1-Year Pathway Costs: T0")
 # pathway utility
 utility_H1_T0 =     # utility of the patient if they stay Healthy
 utility_U1_T0 =     # utility of the patient if they become Unhealthy
-utility_D1_T0 =     # utility of the patient if they become unhealthy
+utility_D1_T0 =     # utility of the patient if they Die
 
 
 utility_T0_1_table <- tribble(
@@ -160,7 +160,7 @@ kable(cost_T1_1_table, caption = "1-Year Pathway Costs: T1")
 # pathway utility
 utility_H1_T1 =     # utility of the patient if they stay Healthy
 utility_U1_T1 =     # utility of the patient if they become Unhealthy
-utility_D1_T1 =     # utility of the patient if they become unhealthy
+utility_D1_T1 =     # utility of the patient if they Die
 
 utility_T1_1_table <- tribble(
   ~Outcome, ~Utility,

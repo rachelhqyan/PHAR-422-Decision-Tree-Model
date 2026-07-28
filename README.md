@@ -1,4 +1,4 @@
-# PHAR-422: Building a Decision Tree in R
+# PHAR 422: Building a Decision Tree in R
 
 ## Learning Objectives
 - Construct cohort-based Decision Tree models in R
