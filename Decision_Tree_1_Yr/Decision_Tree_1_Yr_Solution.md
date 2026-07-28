@@ -58,7 +58,7 @@ U_D <- 0    # annual utility of being Dead
 
 ## Building the 1 Year Decision Tree: Conventional Management (T0)
 
-### Conventional management (T0) has no initial cost so C_T0 is 0. Every patient enters the model in a Healthy state. From this root node patients may remain Healthy, become Unhealthy, or Die in the first-year.
+Conventional management (T0) has no initial cost so C_T0 is 0. Every patient enters the model in a Healthy state. From this root node patients may remain Healthy, become Unhealthy, or Die in the first-year.
 
 ```{r}
 # pathway probabilities 
@@ -117,7 +117,7 @@ kable(utility_T0_1_table, caption = "1-Year Pathway Utilities: T0")
 
 ## Building the 1 Year Decision Tree: Treatment (T1)
 
-### The treatment (T1) has an annual cost of 1000 so C_T1 is 1000. Every patient receiving the treatment must pay the annual cost regardless of the outcome.
+The treatment (T1) has an annual cost of 1000 so C_T1 is 1000. Every patient receiving the treatment must pay the annual cost regardless of the outcome.
 
 ```{r}
 # pathway probabilities 
