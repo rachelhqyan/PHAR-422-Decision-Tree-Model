@@ -5,7 +5,7 @@ author: Rachel Yan
 ---
 
 ## Exercise 1: Decision Tree - 1 Year Time Horizon
-  
+
 Consider a latent disease whereby there are three possible health states: “Healthy”, “Unhealthy” and “Death.” A new treatment has been discovered that has been found to reduce the probability of disease carriers becoming unhealthy (though people must continue treatment even after they become unhealthy). You have been asked to conduct an appraisal of the costs and benefits of the treatment.
 
 A randomised study found that 13 out of 1456 patients using the new treatment became unhealthy each year, compared to 26 out of 1464 in the control group (which is conventional management). The risk of mortality was the same for each arm (8 deaths out of 1825 healthy patients per year and 9 deaths out of 1095 unhealthy patients). Once patients become unhealthy, they cannot become healthy again but all patients start off as healthy carriers.
