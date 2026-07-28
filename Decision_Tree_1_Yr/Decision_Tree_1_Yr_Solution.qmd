@@ -192,7 +192,7 @@ exp_cost_T0_1_table <- tribble(
   ~Outcome,    ~Expected_Cost,
   "Healthy",    scales::dollar(exp_cost_T0_1["Healthy"], accuracy = 1),
   "Unhealthy",  scales::dollar(exp_cost_T0_1["Unhealthy"], accuracy = 1),
-  "Death",      scales::dollar(exp_cost_T0_1["Death"], accuracy = 1),
+  "Death",      scales::dollar(exp_cost_T0_1["Death"], accuracy = 1)
 )
 
 kable(exp_cost_T0_1_table, caption = "1-Year Expected Costs: T0")
@@ -210,7 +210,7 @@ exp_cost_T1_1_table <- tribble(
   ~Outcome,    ~Expected_Cost,
   "Healthy",    scales::dollar(exp_cost_T1_1["Healthy"], accuracy = 1),
   "Unhealthy",  scales::dollar(exp_cost_T1_1["Unhealthy"], accuracy = 1),
-  "Death",      scales::dollar(exp_cost_T1_1["Death"], accuracy = 1),
+  "Death",      scales::dollar(exp_cost_T1_1["Death"], accuracy = 1)
 )
 
 kable(exp_cost_T1_1_table, caption = "1-Year Expected Costs: T1")
@@ -239,7 +239,7 @@ exp_qaly_T0_1_table <- tribble(
   ~Outcome,    ~Expected_QALY,
   "Healthy",    round(exp_qaly_T0_1["Healthy"], 3),
   "Unhealthy",  round(exp_qaly_T0_1["Unhealthy"], 3),
-  "Death",      round(exp_qaly_T0_1["Death"], 3),
+  "Death",      round(exp_qaly_T0_1["Death"], 3)
 )
 
 kable(exp_qaly_T0_1_table, caption = "1-Year Expected QALY: T0")
@@ -257,7 +257,7 @@ exp_qaly_T1_1_table <- tribble(
   ~Outcome,    ~Expected_QALY,
   "Healthy",    round(exp_qaly_T1_1["Healthy"], 3),
   "Unhealthy",  round(exp_qaly_T1_1["Unhealthy"], 3),
-  "Death",      round(exp_qaly_T1_1["Death"], 3),
+  "Death",      round(exp_qaly_T1_1["Death"], 3)
 )
 
 kable(exp_qaly_T1_1_table, caption = "1-Year Expected QALY: T1")
