@@ -1,5 +1,4 @@
 # Healthy Unhealthy Decision Tree (1-Year Time Horizon) With Solution
-Rachel Yan
 
 ## Exercise 2: Decision Tree - 2 Year Time Horizon
 
