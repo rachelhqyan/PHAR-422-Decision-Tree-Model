@@ -38,6 +38,7 @@ You only need the first paragraph of instructions for each.
 - Unzip and open the repository from your downloads folder
 - Click to open the `Decision_Tree_1_Yr` folder (in RStudio, if asked)
 - We will work on `Decision_Tree_1_Yr.qmd`
+- Then we will work on `Decision_Tree_2_Yr.qmd`
 
 *Note: you may want to move the R project folder out of your downloads folder to a more logical place, such as where you store 
 class materials on your computer. You can do that within finder by dragging and dropping the entire folder to your preferred location.
