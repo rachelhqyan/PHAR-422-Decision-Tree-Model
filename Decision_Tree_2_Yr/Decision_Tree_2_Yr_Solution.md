@@ -237,10 +237,10 @@ cost_HD_T0_2 = (C_H + C_D) + 2*C_T0  # cost of the patient if they Die
 
 # Unhealthy after Year 1
 cost_UU_T0_2 = (C_U + C_U) + 2*C_T0  # cost of the patient if they stay Unhealthy
-cost_UD_T0_2 = (C_U + C_D) + 2*C_T1  # cost of the patient if they Die
+cost_UD_T0_2 = (C_U + C_D) + 2*C_T0  # cost of the patient if they Die
 
 # Death after Year 1
-cost_DD_T0_2 = (C_D + C_D) + 2*C_T1  # cost of the patient if they stay Dead
+cost_DD_T0_2 = (C_D + C_D) + C_T0  # cost of the patient if they stay Dead
 
 cost_T0_2_table <- tribble(
   ~Outcome, ~Cost,
