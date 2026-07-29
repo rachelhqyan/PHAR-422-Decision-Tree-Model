@@ -20,7 +20,9 @@ The health utility associated with healthy patients is 0.9 (SE 0.02). Unhealthy 
  - What is the expected cost of treatment in each strategy - the new treatment ('T1') versus conventional management ('T0')?
  - What is the expected QALYs of patients in each strategy?
  - What is the 2 year cost effectiveness of the new treatment?
-  
+
+![Decision_Tree_2_Yr](../Figures/Decision_Tree_2_Yr.png)
+
 ## Modeling
 
 First we'll load some helpful packages.
