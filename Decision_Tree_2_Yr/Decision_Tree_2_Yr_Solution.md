@@ -36,6 +36,8 @@ treatment (‘T1’) versus conventional management (‘T0’)? What is the
 expected QALYs of patients in each strategy? What is the 2 year cost
 effectiveness of the new treatment?
 
+![Decision_Tree_2_Yr](../Figures/Decision_Tree_2_Yr.png)
+
 ## Modeling
 
 First we’ll load some helpful packages.
