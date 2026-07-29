@@ -1,7 +1,7 @@
 ---
 title: "Healthy_Unhealthy_Decision_Tree_(2_Year_Time_Horizon)"
-output: md
-author: Rachel Yan
+format: md
+editor: visual
 ---
 
 ## Exercise 2: Decision Tree - 2 Year Time Horizon
