@@ -1,4 +1,4 @@
-# Healthy_Unhealthy_Decision_Tree\_(2_Year_Time_Horizon)
+# Healthy_Unhealthy_Decision_Tree_(2_Year_Time_Horizon)
 
 
 ## Exercise 2: Decision Tree - 2 Year Time Horizon
