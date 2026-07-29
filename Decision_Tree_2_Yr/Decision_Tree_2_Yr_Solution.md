@@ -1,3 +1,6 @@
+# Healthy Unhealthy Decision Tree (1-Year Time Horizon) With Solution
+Rachel Yan
+
 ## Exercise 2: Decision Tree - 2 Year Time Horizon
 
 Consider a latent disease whereby there are three possible health states: “Healthy”, “Unhealthy” and “Death.” A new treatment has been discovered that has been found to reduce the probability of disease carriers becoming unhealthy (though people must continue treatment even after they become unhealthy). You have been asked to conduct an appraisal of the costs and benefits of the treatment.
