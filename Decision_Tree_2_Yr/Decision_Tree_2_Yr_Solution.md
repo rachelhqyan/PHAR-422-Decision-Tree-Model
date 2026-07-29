@@ -157,7 +157,7 @@ p_DD2_T0 = p_D1_T0  # probability the patient stays Dead in Year 2
 ```
 
 ``` r
-# Total pathway probabilities (combine all terminal nodes)
+# Total pathway probabilities (combine all terminal nodes, probability 1yr * probability 2yr)
 
 # Healthy after Year 1
 p_HH_T0_2 = p_HH2_T0 * p_H1_T0  # total probability the patient stays Healthy
@@ -228,19 +228,19 @@ sum(p_HH_T0_2, p_HU_T0_2, p_HD_T0_2, p_UU_T0_2, p_UD_T0_2, p_DD_T0_2)
     [1] 1
 
 ``` r
-# 2 year pathway costs
+# 2 year pathway costs ((cost of outcome yr 1 + yr 2)*treatment cost)
 
 # Healthy after Year 1
-cost_HH_T0_2 = C_H + C_H  # cost of the patient if they stay Healthy
-cost_HU_T0_2 = C_H + C_U  # cost of the patient if they become Unhealthy
-cost_HD_T0_2 = C_H + C_D  # cost of the patient if they Die
+cost_HH_T0_2 = (C_H + C_H) + 2*C_T0  # cost of the patient if they stay Healthy
+cost_HU_T0_2 = (C_H + C_U) + 2*C_T0  # cost of the patient if they become Unhealthy
+cost_HD_T0_2 = (C_H + C_D) + 2*C_T0  # cost of the patient if they Die
 
 # Unhealthy after Year 1
-cost_UU_T0_2 = C_U + C_U  # cost of the patient if they stay Unhealthy
-cost_UD_T0_2 = C_U + C_D  # cost of the patient if they Die
+cost_UU_T0_2 = (C_U + C_U) + 2*C_T0  # cost of the patient if they stay Unhealthy
+cost_UD_T0_2 = (C_U + C_D) + 2*C_T1  # cost of the patient if they Die
 
 # Death after Year 1
-cost_DD_T0_2 = C_D + C_D  # cost of the patient if they stay Dead
+cost_DD_T0_2 = (C_D + C_D) + 2*C_T1  # cost of the patient if they stay Dead
 
 cost_T0_2_table <- tribble(
   ~Outcome, ~Cost,
@@ -292,7 +292,7 @@ kable(cost_T0_2_table, caption = "2-Year Pathway Costs: T0")
 </table>
 
 ``` r
-# 2 year pathway utility
+# 2 year pathway utility (utility of outcome yr 1 + yr 2)
 
 # Healthy after Year 1
 utility_HH_T0_2 = U_H + U_H  # utility of the patient if they stay Healthy
@@ -418,7 +418,7 @@ p_DD2_T1 <- p_D1_T1  # probability the patient stays Dead in year 2
 ```
 
 ``` r
-# Total pathway probabilities (combine all terminal nodes)
+# Total pathway probabilities (combine all terminal nodes, probability 1yr * probability 2yr)
 
 # Healthy after Year 1
 p_HH_T1_2 = p_HH2_T1 * p_H1_T1  # total probability the patient stays Healthy
@@ -489,7 +489,7 @@ sum(p_HH_T1_2, p_HU_T1_2, p_HD_T1_2, p_UU_T1_2, p_UD_T1_2, p_DD_T1_2)
     [1] 1
 
 ``` r
-# 2 year pathway costs
+# 2 year pathway costs ((cost of outcome yr 1 + yr 2)*treatment cost)
 
 # Healthy after Year 1
 cost_HH_T1_2 = (C_H + C_H) + 2*C_T1  # cost of the patient if they stay Healthy
@@ -553,7 +553,7 @@ kable(cost_T1_2_table, caption = "2-Year Pathway Costs: T1")
 </table>
 
 ``` r
-# 2 year pathway utility
+# 2 year pathway utility (utility of outcome yr 1 + yr 2)
 
 # Healthy after Year 1
 utility_HH_T1_2 = U_H + U_H  # utility of the patient if they stay Healthy
