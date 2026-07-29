@@ -17,10 +17,9 @@ The health utility associated with healthy patients is 0.9 (SE 0.02). Unhealthy 
 2.1. Using the same information from exercise 1, extend your decision tree structure to represent a 2 year time horizon
 
 2.2. Using the decision tree structure created, and the cost and probability data, populate the model to calculate the following: 
-
-  - What is the expected cost of treatment in each strategy - the new treatment ('T1') versus conventional management ('T0')?
-  - What is the expected QALYs of patients in each strategy?
-  - What is the 2 year cost effectiveness of the new treatment?
+ - What is the expected cost of treatment in each strategy - the new treatment ('T1') versus conventional management ('T0')?
+ - What is the expected QALYs of patients in each strategy?
+ - What is the 2 year cost effectiveness of the new treatment?
   
 ## Modeling
 
