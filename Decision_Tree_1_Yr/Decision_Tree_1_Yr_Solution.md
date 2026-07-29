@@ -35,6 +35,8 @@ populate the model to calculate the following:
 -   What is the expected QALYs of patients in each strategy?
 -   What is the 1 year cost effectiveness of the new treatment?
 
+![Decision_Tree_1_Yr](../Figures/Decision_Tree_1_Yr.png)
+
 ## Modeling
 
 First we’ll load some helpful packages.
