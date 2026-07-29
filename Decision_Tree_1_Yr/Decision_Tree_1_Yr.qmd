@@ -218,8 +218,8 @@ kable(exp_cost_T1_1_table, caption = "1-Year Expected Costs: T1")
 ```{r}
 exp_cost_1yr <- tribble(
   ~Strategy, ~Expected_Cost,
-  "T0 (Conventional)", sum(),
-  "T1 (Treatment)", sum()
+  "T0 (Conventional)", scales::dollar(sum(), accuracy = 0.01),
+  "T1 (Treatment)", scales::dollar(sum(), accuracy = 0.01)
 )
 
 kable(exp_cost_1yr, caption = "1-Year Expected Costs")
