@@ -1,7 +1,7 @@
 ---
-title: "Healthy Unhealthy Decision Tree (1-Year Time Horizon) With Solution"
+title: "Healthy_Unhealthy_Decision_Tree_(2_Year_Time_Horizon)"
 format: md
-author: Rachel Yan
+editor: visual
 ---
 
 ## Exercise 1: Decision Tree - 1 Year Time Horizon
