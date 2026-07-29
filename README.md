@@ -1,11 +1,8 @@
 # PHAR 422: Building a Decision Tree in R
 
 ## Learning Objectives
-- Construct cohort-based Decision Tree models in R
-- Determine the ICER and display results on a cost-effectiveness plane
-- Develop a probabilistic sensitivity analysis
-- Characterize parameter uncertainty using a cost effectiveness acceptability curves
-
+- Construct Decision Tree models in R
+- Determine the ICER
 
 ## 1. Installation
 
