@@ -37,7 +37,7 @@ populate the model to calculate the following:
 - What is the 1 year cost effectiveness of the new treatment?
 
 <figure>
-<img src="../Figures/Decision_Tree_1_Yr.png" alt="Decision_Tree_1_Yr" />
+<img src="../Figures/1_Yr_Decision_Tree.png" alt="1_Yr_Decision_Tree" />
 <figcaption aria-hidden="true">Decision_Tree_1_Yr</figcaption>
 </figure>
 
