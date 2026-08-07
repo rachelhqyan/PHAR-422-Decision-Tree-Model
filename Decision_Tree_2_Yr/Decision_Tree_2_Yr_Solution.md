@@ -1,4 +1,4 @@
-# Healthy_Unhealthy_Decision_Tree_(2_Year_Time_Horizon)
+# Healthy_Unhealthy_Decision_Tree\_(2_Year_Time_Horizon)
 
 
 ## Exercise 2: Decision Tree - 2 Year Time Horizon
@@ -29,14 +29,16 @@ Unhealthy patients have a health utility of 0.4 (SE 0.04).
 tree structure to represent a 2 year time horizon
 
 2.2. Using the decision tree structure created, and the cost and
-probability data, populate the model to calculate the following:
-
-What is the expected cost of treatment in each strategy - the new
-treatment (‘T1’) versus conventional management (‘T0’)? What is the
-expected QALYs of patients in each strategy? What is the 2 year cost
+probability data, populate the model to calculate the following: - What
+is the expected cost of treatment in each strategy - the new treatment
+(‘T1’) versus conventional management (‘T0’)? - What is the expected
+QALYs of patients in each strategy? - What is the 2 year cost
 effectiveness of the new treatment?
 
-![Decision_Tree_2_Yr](../Figures/Decision_Tree_2_Yr.png)
+<figure>
+<img src="../Figures/2_Yr_Decision_Tree.png" alt="Decision_Tree_2_Yr" />
+<figcaption aria-hidden="true">Decision_Tree_2_Yr</figcaption>
+</figure>
 
 ## Modeling
 
@@ -355,6 +357,136 @@ kable(utility_T0_2_table, caption = "2-Year Pathway Utilities: T0")
 </tbody>
 </table>
 
+``` r
+# 2 year expected cost (p*cost) under conventional management (T0)
+exp_cost_T0_2 <- c(
+  HH = p_HH_T0_2 * cost_HH_T0_2,
+  HU = p_HU_T0_2 * cost_HU_T0_2,
+  HD = p_HD_T0_2 * cost_HD_T0_2,
+  UU = p_UU_T0_2 * cost_UU_T0_2,
+  UD = p_UD_T0_2 * cost_UD_T0_2,
+  DD = p_DD_T0_2 * cost_DD_T0_2
+)
+
+exp_cost_T0_2_table <- tribble(
+  ~Outcome, ~Expected_Cost,
+  "Healthy_Healthy", scales::dollar(exp_cost_T0_2["HH"], accuracy = 1),
+  "Healthy_Unhealthy", scales::dollar(exp_cost_T0_2["HU"], accuracy = 1),
+  "Healthy_Death", scales::dollar(exp_cost_T0_2["HD"], accuracy = 1),
+  "Unhealthy_Unhealthy", scales::dollar(exp_cost_T0_2["UU"], accuracy = 1),
+  "Unhealthy_Death", scales::dollar(exp_cost_T0_2["UD"], accuracy = 1),
+  "Death_Death", scales::dollar(exp_cost_T0_2["DD"], accuracy = 1),
+  "T0 (Conventional)", scales::dollar(sum(exp_cost_T0_2), accuracy = 0.01)
+)
+
+kable(exp_cost_T0_2_table, caption = "2-Year Expected Costs: T0")
+```
+
+<table>
+<caption>2-Year Expected Costs: T0</caption>
+<thead>
+<tr>
+<th style="text-align: left;">Outcome</th>
+<th style="text-align: left;">Expected_Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Healthy_Healthy</td>
+<td style="text-align: left;">$0</td>
+</tr>
+<tr>
+<td style="text-align: left;">Healthy_Unhealthy</td>
+<td style="text-align: left;">$104</td>
+</tr>
+<tr>
+<td style="text-align: left;">Healthy_Death</td>
+<td style="text-align: left;">$0</td>
+</tr>
+<tr>
+<td style="text-align: left;">Unhealthy_Unhealthy</td>
+<td style="text-align: left;">$211</td>
+</tr>
+<tr>
+<td style="text-align: left;">Unhealthy_Death</td>
+<td style="text-align: left;">$1</td>
+</tr>
+<tr>
+<td style="text-align: left;">Death_Death</td>
+<td style="text-align: left;">$0</td>
+</tr>
+<tr>
+<td style="text-align: left;">T0 (Conventional)</td>
+<td style="text-align: left;">$316.44</td>
+</tr>
+</tbody>
+</table>
+
+``` r
+# 2 year expected QALY (p*utility) under conventional management (T0)
+exp_qaly_T0_2  <- c(
+  HH = p_HH_T0_2 * utility_HH_T0_2,
+  HU = p_HU_T0_2 * utility_HU_T0_2,
+  HD = p_HD_T0_2 * utility_HD_T0_2,
+  UU = p_UU_T0_2 * utility_UU_T0_2,
+  UD = p_UD_T0_2 * utility_UD_T0_2,
+  DD = p_DD_T0_2 * utility_DD_T0_2
+)
+
+exp_qaly_T0_2_table <- tribble(
+  ~Outcome, ~Expected_QALY,
+  "Healthy_Healthy", round(exp_qaly_T0_2["HH"], 3),
+  "Healthy_Unhealthy", round(exp_qaly_T0_2["HU"], 3),
+  "Healthy_Death", round(exp_qaly_T0_2["HD"], 3),
+  "Unhealthy_Unhealthy", round(exp_qaly_T0_2["UU"], 3),
+  "Unhealthy_Death", round(exp_qaly_T0_2["UD"], 3),
+  "Death_Death", round(exp_qaly_T0_2["DD"], 3),
+  "T0 (Conventional)", round(sum(exp_qaly_T0_2), 3)
+)
+
+kable(exp_qaly_T0_2_table, caption = "2-Year Expected QALY: T0")
+```
+
+<table>
+<caption>2-Year Expected QALY: T0</caption>
+<thead>
+<tr>
+<th style="text-align: left;">Outcome</th>
+<th style="text-align: right;">Expected_QALY</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Healthy_Healthy</td>
+<td style="text-align: right;">1.721</td>
+</tr>
+<tr>
+<td style="text-align: left;">Healthy_Unhealthy</td>
+<td style="text-align: right;">0.023</td>
+</tr>
+<tr>
+<td style="text-align: left;">Healthy_Death</td>
+<td style="text-align: right;">0.004</td>
+</tr>
+<tr>
+<td style="text-align: left;">Unhealthy_Unhealthy</td>
+<td style="text-align: right;">0.014</td>
+</tr>
+<tr>
+<td style="text-align: left;">Unhealthy_Death</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr>
+<td style="text-align: left;">Death_Death</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr>
+<td style="text-align: left;">T0 (Conventional)</td>
+<td style="text-align: right;">1.762</td>
+</tr>
+</tbody>
+</table>
+
 ## Building the 2 Year Decision Tree: Treatment (T1)
 
 The treatment (T1) has an annual cost of $1000 so C_T1 is 1000. Every
@@ -616,71 +748,6 @@ kable(utility_T1_2_table, caption = "2-Year Pathway Utilities: T1")
 </tbody>
 </table>
 
-### Expected Cost and QALYs Per Strategy
-
-**\*\*Question: What is the expected cost of treatment in each
-strategy?**
-
-``` r
-# 2 year expected cost (p*cost) under conventional management (T0)
-exp_cost_T0_2 <- c(
-  HH = p_HH_T0_2 * cost_HH_T0_2,
-  HU = p_HU_T0_2 * cost_HU_T0_2,
-  HD = p_HD_T0_2 * cost_HD_T0_2,
-  UU = p_UU_T0_2 * cost_UU_T0_2,
-  UD = p_UD_T0_2 * cost_UD_T0_2,
-  DD = p_DD_T0_2 * cost_DD_T0_2
-)
-
-exp_cost_T0_2_table <- tribble(
-  ~Outcome, ~Expected_Cost,
-  "Healthy_Healthy", scales::dollar(exp_cost_T0_2["HH"], accuracy = 1),
-  "Healthy_Unhealthy", scales::dollar(exp_cost_T0_2["HU"], accuracy = 1),
-  "Healthy_Death", scales::dollar(exp_cost_T0_2["HD"], accuracy = 1),
-  "Unhealthy_Unhealthy", scales::dollar(exp_cost_T0_2["UU"], accuracy = 1),
-  "Unhealthy_Death", scales::dollar(exp_cost_T0_2["UD"], accuracy = 1),
-  "Death_Death", scales::dollar(exp_cost_T0_2["DD"], accuracy = 1)
-)
-
-kable(exp_cost_T0_2_table, caption = "2-Year Expected Costs: T0")
-```
-
-<table>
-<caption>2-Year Expected Costs: T0</caption>
-<thead>
-<tr>
-<th style="text-align: left;">Outcome</th>
-<th style="text-align: left;">Expected_Cost</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">Healthy_Healthy</td>
-<td style="text-align: left;">$0</td>
-</tr>
-<tr>
-<td style="text-align: left;">Healthy_Unhealthy</td>
-<td style="text-align: left;">$104</td>
-</tr>
-<tr>
-<td style="text-align: left;">Healthy_Death</td>
-<td style="text-align: left;">$0</td>
-</tr>
-<tr>
-<td style="text-align: left;">Unhealthy_Unhealthy</td>
-<td style="text-align: left;">$211</td>
-</tr>
-<tr>
-<td style="text-align: left;">Unhealthy_Death</td>
-<td style="text-align: left;">$1</td>
-</tr>
-<tr>
-<td style="text-align: left;">Death_Death</td>
-<td style="text-align: left;">$0</td>
-</tr>
-</tbody>
-</table>
-
 ``` r
 # 2 year expected cost (p*cost) under treatment (T1)
 exp_cost_T1_2 <- c(
@@ -699,7 +766,8 @@ exp_cost_T1_2_table <- tribble(
   "Healthy_Death", scales::dollar(exp_cost_T1_2["HD"], accuracy = 1),
   "Unhealthy_Unhealthy", scales::dollar(exp_cost_T1_2["UU"], accuracy = 1),
   "Unhealthy_Death", scales::dollar(exp_cost_T1_2["UD"], accuracy = 1),
-  "Death_Death", scales::dollar(exp_cost_T1_2["DD"], accuracy = 1)
+  "Death_Death", scales::dollar(exp_cost_T1_2["DD"], accuracy = 1),
+  "T1 (Treatment)", scales::dollar(sum(exp_cost_T1_2), accuracy = 0.01)
 )
 
 kable(exp_cost_T1_2_table, caption = "2-Year Expected Costs: T1")
@@ -738,98 +806,9 @@ kable(exp_cost_T1_2_table, caption = "2-Year Expected Costs: T1")
 <td style="text-align: left;">Death_Death</td>
 <td style="text-align: left;">$4</td>
 </tr>
-</tbody>
-</table>
-
-``` r
-exp_cost_2yr <- tribble(
-  ~Strategy, ~Expected_Cost,
-  "T0 (Conventional)", scales::dollar(sum(exp_cost_T0_2), accuracy = 0.01),
-  "T1 (Treatment)", scales::dollar(sum(exp_cost_T1_2), accuracy = 0.01)
-)
-
-kable(exp_cost_2yr, caption = "2-Year: Expected Costs")
-```
-
-<table>
-<caption>2-Year: Expected Costs</caption>
-<thead>
-<tr>
-<th style="text-align: left;">Strategy</th>
-<th style="text-align: left;">Expected_Cost</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">T0 (Conventional)</td>
-<td style="text-align: left;">$316.44</td>
-</tr>
 <tr>
 <td style="text-align: left;">T1 (Treatment)</td>
 <td style="text-align: left;">$2,155.18</td>
-</tr>
-</tbody>
-</table>
-
-**\*\*Question: What is the expected QALYs of patients in each
-strategy?**
-
-``` r
-# 2 year expected QALY (p*utility) under conventional management (T0)
-exp_qaly_T0_2  <- c(
-  HH = p_HH_T0_2 * utility_HH_T0_2,
-  HU = p_HU_T0_2 * utility_HU_T0_2,
-  HD = p_HD_T0_2 * utility_HD_T0_2,
-  UU = p_UU_T0_2 * utility_UU_T0_2,
-  UD = p_UD_T0_2 * utility_UD_T0_2,
-  DD = p_DD_T0_2 * utility_DD_T0_2
-)
-
-exp_qaly_T0_2_table <- tribble(
-  ~Outcome, ~Expected_QALY,
-  "Healthy_Healthy", round(exp_qaly_T0_2["HH"], 3),
-  "Healthy_Unhealthy", round(exp_qaly_T0_2["HU"], 3),
-  "Healthy_Death", round(exp_qaly_T0_2["HD"], 3),
-  "Unhealthy_Unhealthy", round(exp_qaly_T0_2["UU"], 3),
-  "Unhealthy_Death", round(exp_qaly_T0_2["UD"], 3),
-  "Death_Death", round(exp_qaly_T0_2["DD"], 3)
-)
-
-kable(exp_qaly_T0_2_table, caption = "2-Year Expected QALY: T0")
-```
-
-<table>
-<caption>2-Year Expected QALY: T0</caption>
-<thead>
-<tr>
-<th style="text-align: left;">Outcome</th>
-<th style="text-align: right;">Expected_QALY</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">Healthy_Healthy</td>
-<td style="text-align: right;">1.721</td>
-</tr>
-<tr>
-<td style="text-align: left;">Healthy_Unhealthy</td>
-<td style="text-align: right;">0.023</td>
-</tr>
-<tr>
-<td style="text-align: left;">Healthy_Death</td>
-<td style="text-align: right;">0.004</td>
-</tr>
-<tr>
-<td style="text-align: left;">Unhealthy_Unhealthy</td>
-<td style="text-align: right;">0.014</td>
-</tr>
-<tr>
-<td style="text-align: left;">Unhealthy_Death</td>
-<td style="text-align: right;">0.000</td>
-</tr>
-<tr>
-<td style="text-align: left;">Death_Death</td>
-<td style="text-align: right;">0.000</td>
 </tr>
 </tbody>
 </table>
@@ -852,7 +831,8 @@ exp_qaly_T1_2_table <- tribble(
   "Healthy_Death", round(exp_qaly_T1_2["HD"], 3),
   "Unhealthy_Unhealthy", round(exp_qaly_T1_2["UU"], 3),
   "Unhealthy_Death", round(exp_qaly_T1_2["UD"], 3),
-  "Death_Death", round(exp_qaly_T1_2["DD"], 3)
+  "Death_Death", round(exp_qaly_T1_2["DD"], 3),
+  "T1 (Treatment)", round(sum(exp_qaly_T1_2), 3)
 )
 
 kable(exp_qaly_T1_2_table, caption = "2-Year Expected QALY: T1")
@@ -891,32 +871,6 @@ kable(exp_qaly_T1_2_table, caption = "2-Year Expected QALY: T1")
 <td style="text-align: left;">Death_Death</td>
 <td style="text-align: right;">0.000</td>
 </tr>
-</tbody>
-</table>
-
-``` r
-exp_qaly_2yr <- tribble(
-  ~Strategy, ~Expected_QALY,
-  "T0 (Conventional)", round(sum(exp_qaly_T0_2), 3),
-  "T1 (Treatment)", round(sum(exp_qaly_T1_2), 3)
-)
-
-kable(exp_qaly_2yr, caption = "2-Year: Expected QALY")
-```
-
-<table>
-<caption>2-Year: Expected QALY</caption>
-<thead>
-<tr>
-<th style="text-align: left;">Strategy</th>
-<th style="text-align: right;">Expected_QALY</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">T0 (Conventional)</td>
-<td style="text-align: right;">1.762</td>
-</tr>
 <tr>
 <td style="text-align: left;">T1 (Treatment)</td>
 <td style="text-align: right;">1.775</td>
@@ -925,9 +879,6 @@ kable(exp_qaly_2yr, caption = "2-Year: Expected QALY")
 </table>
 
 ### 2 Year ICER
-
-**\*\*Question: What is the 1-year-cost-effectiveness of the new
-treatment?**
 
 ``` r
 incremental_cost_2 <- sum(exp_cost_T1_2) - sum(exp_cost_T0_2)
@@ -959,3 +910,24 @@ kable(icer_2yr, caption = "2-Year: ICER")
 </tr>
 </tbody>
 </table>
+
+**\*\*Question: What is the expected cost of treatment in each
+strategy?**
+
+The expected cost under conventional management (T0) is $316.44.
+
+The expected cost under treatment (T1) is $2,155.18.
+
+**\*\*Question: What is the expected QALYs of patients in each
+strategy?**
+
+The expected QALYs of patients under conventional management (T0) is
+1.762.
+
+The expected QALYs of patients under treatment (T1) is 1.775.
+
+**\*\*Question: What is the 1-year-cost-effectiveness of the new
+treatment?**
+
+The 1-year-cost-effectiveness of the new treatment (T1) is $140,325 per
+QALY gained.
