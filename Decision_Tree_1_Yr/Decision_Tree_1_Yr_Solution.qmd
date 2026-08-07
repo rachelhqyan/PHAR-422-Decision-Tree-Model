@@ -22,7 +22,7 @@ The health utility associated with healthy patients is 0.9 (SE 0.02). Unhealthy 
 - What is the expected QALYs of patients in each strategy?
 - What is the 1 year cost effectiveness of the new treatment?
 
-![Decision_Tree_1_Yr](../Figures/Decision_Tree_1_Yr.png)
+![Decision_Tree_1_Yr](../Figures/1_Yr_Decision_Tree.png)
 
 ## Modeling
 
