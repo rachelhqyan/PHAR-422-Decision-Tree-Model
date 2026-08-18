@@ -64,7 +64,7 @@ U_D <-   # annual utility of being Dead
 
 ## Building the 1 Year Decision Tree: Conventional Management (T0)
 
-Conventional management (T0) has no initial cost so C_T0 is 0. Every patient enters the model in a Healthy state. From this root node patients may remain Healthy, become Unhealthy, or Die in the first-year.
+Conventional management (T0) has no initial cost so C_T0 is 0. Every patient enters the model in a Healthy state. From this root node patients may remain Healthy, become Unhealthy, or Die in the first-year, with the Healthy probability equal to 1 minus Unhealthy and Death.
 
 ```{r}
 # pathway probabilities 
@@ -88,7 +88,7 @@ sum(p_H1_T0, p_U1_T0, p_D1_T0)
 ```
 
 ```{r}
-# pathway costs
+# pathway costs (cost of outcome + treatment)
 cost_H1_T0 =   # cost of the patient if they stay Healthy
 cost_U1_T0 =   # cost of the patient if they become Unhealthy
 cost_D1_T0 =   # cost of the patient if they Die
