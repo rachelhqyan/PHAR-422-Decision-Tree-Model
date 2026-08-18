@@ -277,7 +277,7 @@ kable(exp_cost_T0_1_table, caption = "1-Year Expected Costs: T0")
 </table>
 
 ``` r
-# expected utility (p*utility) under conventional management (T0)
+# expected QALY (p*utility) under conventional management (T0)
 exp_qaly_T0_1 <- c(
   Healthy = p_H1_T0 * utility_H1_T0,
   Unhealthy = p_U1_T0 * utility_U1_T0,
